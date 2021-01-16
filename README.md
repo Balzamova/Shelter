@@ -1,1 +1,1 @@
-# Shelter-project-RSSchool
+# Project task from RS School education
