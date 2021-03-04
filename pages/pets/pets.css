@@ -1,0 +1,155 @@
+/* Zeroing of all auto styles */
+* { margin: 0;
+    padding: 0;
+    border: 0;
+}
+*, *:before,*:after {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+:focus, :active {outline: none;}
+a:focus, a:active {outline: none;}
+nav, footer, header, aside {display: block}
+html, body {
+    width: 100%;
+    height: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+input, button, textarea {font-family: inherit;}
+input::-ms-clear {display: none;}
+button {cursor: pointer;}
+button::-moz-focus-inner {padding: 0; border: 0;}
+a, a:visited {text-decoration: none;}
+a:hover {text-decoration: none;}
+ul li {list-style: none;}
+img {vertical-align: top;}
+
+
+/*---------------------*/
+
+.pets-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #F6F6F6;
+}
+.heading {
+    max-width: 400px;;
+    margin: 80px auto 60px;
+    font-family: Georgia;
+    font-size: 35px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+/*задать стили для всего блока pets
+с учетом марджинов между карточками, 
+сделать flex-wrap: wrap;
+и ограничить ширину контейнера pets*/
+.pets {
+
+}
+
+/*стили для карточки */
+.card {
+    width: 270px;
+    height: 435px;
+    background: #FAFAFA;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.card:hover,
+.card:hover .card__button {
+    background: #FFFFFF;
+}
+.card__img {
+    width: 270px;
+    height: 270px;
+}
+.card__title {
+    margin: 30px auto 15px;
+    font-family: Georgia;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+.card__button {
+    width: 187px;
+    height: 52px;
+    margin: 15px auto 30px;   
+    background: #FAFAFA;
+    border: 2px solid #F1CDB3;
+    box-sizing: border-box;
+    border-radius: 100px;
+    font-family: Georgia;
+    font-size: 17px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: #292929;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card__button:hover {
+    background: #FDDCC4;
+}
+.pagination-block {
+    display: flex;
+    margin: 60px auto 100px;
+}
+.firstPage, 
+.prevPage, 
+.nextPage, 
+.lastPage  {
+    width: 52px;
+    height: 52px;
+    border: 2px solid #F1CDB3;
+    border-radius: 100px;
+    margin: 0 10px;
+}
+.numberPage {
+    width: 52px;
+    height: 52px;
+    margin: 0 10px;
+    background: #F1CDB3;
+    border-radius: 100px;
+    border: none;
+
+    font-family: Georgia;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    color: #292929;
+    cursor: default;
+}
+.disabled {
+    border: 2px solid #CDCDCD;
+    box-sizing: border-box;
+    border-radius: 100px;
+}
+.firstPage:hover, 
+.prevPage:hover, 
+.nextPage:hover, 
+.lastPage:hover {
+    cursor: pointer;
+    background: #FDDCC4;
+}
+.firstPage:active, 
+.prevPage:active, 
+.nextPage:active, 
+.lastPage:active {
+    cursor: pointer;
+    background: #F1CDB3;
+}
