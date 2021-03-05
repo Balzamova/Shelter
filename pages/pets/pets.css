@@ -130,6 +130,9 @@ img {vertical-align: top;}
     position: relative;
     margin: 0 auto 200px;
 }
+.pets__slider {
+    overflow: hidden;
+}
 .pets {
     display: flex;
     flex-flow: wrap;
@@ -137,7 +140,7 @@ img {vertical-align: top;}
     row-gap: 30px;
     top: 0px;
     height: 910px;
-   /* overflow: hidden;    */
+  /*  overflow: hidden;    */
     position: relative;
 }
 
@@ -343,21 +346,6 @@ img {vertical-align: top;}
 .popup__close:hover {
     background: #FDDCC4;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* поправить цвет фона- выдает ошибку*/
 .footer {
