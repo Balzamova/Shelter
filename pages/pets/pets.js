@@ -5,21 +5,22 @@ const nextPageBtn = document.querySelector('.nextPage');
 const lastPageBtn = document.querySelector('.lastPage');
 const popupClosedBtn = document.querySelector('.popup__close');
 
-let pets = [];
-let fullPetsList = []; //все 48 животных = 8*6 стр
+const slider = document.querySelector('.pets');
+let pets = []; 
+let fullPetsList = []; //48 карточек = 8 шт*6 стр
 let currentPage = 1;
 let itemsPerPage = 8; //по умолчанию большой экран с 8 питомцами
 
+const request = new XMLHttpRequest(); 
+request.open('GET', './pets.json');  
 
-const request = new XMLHttpRequest(); //запрос к списку JSON
-request.open('GET', './pets.json'); //открыть файл JSON 
-request.onload = () => { //посмотреть, что придет в ответе
-    pets = JSON.parse(request.response); //если посмотреть в консоли, увидим массив объектов, распакованный из JSON
+request.onload = () => { 
+    pets = JSON.parse(request.response); 
 
     fullPetsList = (() => {
         let tempArr = [];
         for (let i = 0; i < 6; i++) {
-            const newPets = pets; //генерируем массив из случайных эл-тов (выборка 8)
+            const newPets = pets; //генерируем массив из случайных эл-тов (выборка по 8 pets)
 
             for (let j = pets.length; j > 0; j--) {
                 let randInd = Math.floor(Math.random() * j); //берем рандомный индекс
@@ -31,43 +32,10 @@ request.onload = () => { //посмотреть, что придет в отве
         return tempArr;
     })();
 
-    fullPetsList = sort863(fullPetsList); //сортируем список с учетом 8-6-3 неповторений
+    fullPetsList = sort863(fullPetsList); //сортируем список с учетом 8-6-3 повторений
 
-    createPets(fullPetsList); // создадим животных рандом = 8
-
-    for (let i = 0; i < (fullPetsList.length / 6); i++) { //проверяю и подсвечиваю совпадения 6-рок на границах 8-рок
-        const stepList = fullPetsList.slice(i * 6, (i * 6) + 6);
-
-        for (let j = 0; j < 6; j++) {
-            stepList.forEach((item, ind) => {
-                if (item.name === stepList[j].name && (ind !== j)) {
-                    document.querySelector('#pets').children[(i * 6) + j].style.border = '5px solid red';
-                }
-            })
-        }
-    }
-}
-
-request.send();
-
-const createPets = (petsList) => {
-    const elem = document.querySelector('.pets');
-    elem.innerHTML += createElements(petsList);
-   //  console.log(elem);
-}
-
-const createElements = (petsList) => {
-    let str = ''; //создаем строку, циклом заполняем ее картинками с животными
-    for (let i = 0; i < petsList.length; i++) {
-        str += `
-        <div class="card">
-        <img class="card__img" id="pet-photo" src="${petsList[i].img}" alt="pet-photo">
-        <p class="card__title" id="pet-name"> ${petsList[i].name} </p>
-        <button class="card__button"> Learn More </button>
-        </div> `;
-    }
-    return str; //возвращаем строку с животными
-}
+    createPets(fullPetsList); // создадим животных рандомно = 8
+} 
 
 const sort863 = (list) => {
     list = sort6recursively(list);
@@ -75,7 +43,7 @@ const sort863 = (list) => {
 }
 
 const sort6recursively = (list) => {
-    const length = list.length; //48 шт - все элементы
+    const length = list.length; //48 шт = все элементы
 
     for (let i = 0; i < (length / 6); i++) {
         const stepList = list.slice(i * 6, (i * 6) + 6); //берем шаги по 6 шт
@@ -88,15 +56,81 @@ const sort6recursively = (list) => {
             if (duplicatedItem !== undefined) { //определяю в какой 8-ке находится первый дублируемый и ставлю его на первое место в 8-ке
                 const ind = (i * 6) + j;
                 const which8OfList = Math.trunc(ind / 8);
-
-                const elem = list.splice(ind, 1)[0];
-                list.splice(which8OfList * 8, 0, elem)
+                const slider = list.splice(ind, 1)[0];
+                list.splice(which8OfList * 8, 0, slider)
 
                 sort6recursively(list);
             }
         }
     }
     return list;
+}
+
+request.send();
+
+const createPets = (pets) => { 
+    for (let i = 0; i < pets.length; i++) {
+        document.querySelector('.pets')
+        .insertAdjacentHTML("beforeend", createElements(pets[i], i));
+    }     
+}
+
+const createElements = (pet, i) => {  
+    return `
+    <div class="card">
+        <img class="card__img" id="pet-photo" src="${pet.img}" alt="pet-photo">
+        <p class="card__title" id="pet-name"> ${pet.name} </p>
+        <button class="card__button" onclick="openPopBlock(${i})"> Learn More </button>
+    </div> 
+
+    <div class="popup__wrapper innactive">
+        <div class="pets__popup innactive" id="pets__popup${[i]}">
+            <button class="popup__close" onclick="closePopBlock(${i})"> x </button>
+            <div class="popup__block">
+                <img class="popup__img" src="${pet.img}" alt="${pet.name}">
+                <div class="popup__info">
+                    <div class="popup__title" id="pet-name">${pet.name}</div>
+                    <div class="popup__subtitle">${pet.type} - ${pet.breed}</div>
+                    <div class="pet-description">${pet.description}</div>
+                    <ul class="popup__list">
+                        <li class="popup__item">
+                            <span> Age: </span><span class="pet__age">${pet.age}</span>
+                        </li>
+                        <li class="popup__item">
+                            <span>Inoculations: </span><span class="pet__inoculations">${pet.inoculations}</span>
+                        </li>
+                        <li class="popup__item">
+                            <span>Diseases: </span><span class="pet__diseases">${pet.diseases}</span>
+                        </li>
+                        <li class="popup__item">
+                            <span> Parasites: </span><span class="pet__parasites">${pet.parasites}</span>
+                        </li>
+                    </ul>
+                </div>                 
+            </div>
+        </div>
+    </div>   
+    `;
+}
+
+function openPopBlock(i) { 
+    let activePet = document.querySelectorAll(`.pets__popup`)[i];
+    let activeWrapper = document.querySelectorAll(".popup__wrapper")[i];
+
+    activePet.classList.remove('innactive');
+    activeWrapper.classList.remove('innactive');
+    
+    document.querySelector("body").classList.toggle('lock');
+}
+
+function closePopBlock(i) {     
+    let activePet = document.querySelectorAll(`.pets__popup`)[i];
+    let activeWrapper = document.querySelectorAll(".popup__wrapper")[i];
+
+    activePet.classList.add('innactive');
+    activeWrapper.classList.add('innactive');
+
+    document.querySelector("body").classList.toggle('lock');
 }
 
 const checkItemsPerPage = () => {     //проверка количества страниц для загрузки в зависимости от размера экрана
@@ -171,4 +205,3 @@ lastPageBtn.addEventListener('click', (e) => {
     document.querySelector('.pets').style.top = `calc(0px - ${930 * (currentPage -1)}px)`;
     checkBtnsDisabled();
 });
-

@@ -30,8 +30,10 @@ a, a:visited, a:hover, a:active {text-decoration: none;}
 ul li {list-style: none;}
 img {vertical-align: top;}
 
-
 /*---------------------*/
+body.lock {
+    overflow: hidden;
+}
 .wrapper {
     min-height: 100%;
     overflow: hidden;
@@ -140,11 +142,9 @@ img {vertical-align: top;}
     row-gap: 30px;
     top: 0px;
     height: 910px;
-  /*  overflow: hidden;    */
     position: relative;
 }
 
-/*стили для карточки */
 .card {
     width: 270px;
     height: 435px;
@@ -195,7 +195,6 @@ img {vertical-align: top;}
 }
 .pagination-block {
     display: flex;
-    /*margin: 60px auto 100px; */
     position: absolute;
     top: 925px;
 }
@@ -209,6 +208,10 @@ img {vertical-align: top;}
     border-radius: 100px;
     margin: 0 10px;
     background: none;
+    font-family: Georgia;
+    font-size: 20px;
+    line-height: 115%;    
+    color: #292929;
 }
 .numberPage {
     width: 52px;
@@ -249,31 +252,34 @@ img {vertical-align: top;}
 .popup__wrapper {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     z-index: 999;
     background: rgba(41, 41, 41, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .innactive {
     display: none;
+    opacity: 0;
+    visibility: hidden;
  }
-.pets__popup {
-    width: 675px;
-    height: 400px;
-    display: flex;
-    position: relative;
-}
 .popup__block {
     display: flex;
-    align-self: flex-end;
-    background: #FAFAFA;
-    width: 630px;
+    position: fixed;
+}
+.pets__popup {
+    width: 675px;    
     height: 350px;
+    display: flex;
+    background: #FAFAFA;
     border-radius: 9px;
-    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);   
+    position: relative;
+    top: 50vh;
+    left: 50vw;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 30;
 }
 .popup__img {
     width: 350px;
@@ -325,16 +331,16 @@ img {vertical-align: top;}
     background: #F1CDB3;
     margin-right: 10px;
 }
-#pet__age,
-#pet__inoculations,
-#pet__diseases,
-#pet__parasites {
+.pet__age,
+.pet__inoculations,
+.pet__diseases,
+.pet__parasites {
     font-weight: normal;
 }
 .popup__close {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -50px;
+    right: -50px;
     width: 52px;
     height: 52px;
     border: 2px solid #F1CDB3;
@@ -344,10 +350,10 @@ img {vertical-align: top;}
     font-size: 25px;
 }
 .popup__close:hover {
+    cursor: pointer;
     background: #FDDCC4;
 }
 
-/* поправить цвет фона- выдает ошибку*/
 .footer {
     width: 100%;
     background:  radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
