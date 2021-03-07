@@ -1,4 +1,4 @@
-# Development with JS </br>
+# Development with JS code script </br>
 
 ## My ready page-proof: [link](https://balzamova.github.io/shelter/pages/pets/)
 
