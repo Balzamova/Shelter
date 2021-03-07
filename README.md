@@ -1,4 +1,4 @@
-# Simple development  </br>
+# Development with JS </br>
 
 ## My ready page-proof: [link](https://balzamova.github.io/shelter/pages/pets/)
 
@@ -10,10 +10,12 @@
 *   *animation for links and buttons*
 3. **JS**
 *   *1st page:* 
+    - creating DOM objects
     - random creating for elements (pets): 3-2-1 el/page
     - slider block
     - burger menu
 *   *2nd page:*
+    - creating DOM objects
     - random creating for elements (pets): 8-6-3 el/page
     - pagination block
     - burger menu
