@@ -1,22 +1,22 @@
 # Development with JS code script </br>
 
-## My ready page-proof: [link](https://balzamova.github.io/shelter/pages/pets/)
+## My ready page-proof: [link](https://balzamova.github.io/shelter/pages/main/)
 
 ### Used frameworks: </br>
 1. **HTML**
 2. **CSS**
 *   *flex*;
-*   *adaptability for devices (desktop, tablet, mobile)*;
+*   *adaptive for devices (desktop, tablet, mobile)*;
 *   *animation for links and buttons*
 3. **JS**
 *   *1st page:* 
-    - creating DOM objects
-    - random creating for elements (pets): 3-2-1 el/page
+    - creating DOM elements
+    - random adding elements (pets): 3-2-1 el/page
     - slider block
     - burger menu
 *   *2nd page:*
-    - creating DOM objects
-    - random creating for elements (pets): 8-6-3 el/page
+    - creating DOM elements
+    - random adding elements (pets): 8-6-3 el/page
     - pagination block
     - burger menu
 
