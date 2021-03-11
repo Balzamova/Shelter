@@ -1,8 +1,6 @@
-const firstPageBtn = document.querySelector('.firstPage');
 const prevPageBtn = document.querySelector('.prevPage');
-const numberBtn = document.querySelector('.numberPage');
 const nextPageBtn = document.querySelector('.nextPage');
-const lastPageBtn = document.querySelector('.lastPage');
+
 const popupClosedBtn = document.querySelector('.popup__close');
 
 const slider = document.querySelector('.pets');
@@ -70,7 +68,8 @@ request.send();
 
 const createPets = (pets) => { 
     for (let i = 0; i < pets.length; i++) {
-        slider.insertAdjacentHTML("beforeend", createElements(pets[i], i));
+        document.querySelector('.pets')
+        .insertAdjacentHTML("beforeend", createElements(pets[i], i));
     }     
 }
 
@@ -134,41 +133,19 @@ function closePopBlock(i) {
 
 const checkItemsPerPage = () => {     //проверка количества страниц для загрузки в зависимости от размера экрана
     if (document.querySelector('body').offsetWidth > 768 && document.querySelector('body').offsetWidth < 1280) {
-        itemsPerPage = 6;
+        itemsPerPage = 2;
     } else if (document.querySelector('body').offsetWidth <= 768) {
-        itemsPerPage = 3;
-    } else itemsPerPage = 8;
+        itemsPerPage = 1;
+    } else itemsPerPage = 3;
 }
-
-const checkBtnsDisabled = () => {
-    if (currentPage === 1) {
-        firstPageBtn.classList.add('disabled');
-        prevPageBtn.classList.add('disabled');
-    } else {
-        firstPageBtn.classList.remove('disabled');
-        prevPageBtn.classList.remove('disabled');
-    }
-
-    if (currentPage === fullPetsList.length / itemsPerPage) {
-        lastPageBtn.classList.add('disabled');
-        nextPageBtn.classList.add('disabled');
-    } else {
-        lastPageBtn.classList.remove('disabled');
-        nextPageBtn.classList.remove('disabled');
-    }
-}
-
-checkBtnsDisabled();
 
 prevPageBtn.addEventListener('click', (e) => {
     checkItemsPerPage(); 
 
     if (currentPage > 1) currentPage--;
-    numberBtn.textContent = currentPage;
 
-    slider.style.top = `calc(0px - ${930 * (currentPage - 1)}px)`;
+    document.querySelector('.pets').style.left = `calc(0px - ${1080 * (currentPage - 1)}px)`;
     
-    checkBtnsDisabled();
 });
 
 nextPageBtn.addEventListener('click', (e) => {
@@ -176,33 +153,7 @@ nextPageBtn.addEventListener('click', (e) => {
 
     if (currentPage < fullPetsList.length / itemsPerPage) {
         currentPage++;
-        numberBtn.textContent = currentPage;
     }
-
-    slider.style.top = `calc(0px - ${930 * (currentPage -1)}px)`;
-    slider.style.opacity = 1 ;
-
-    checkBtnsDisabled();
+    document.querySelector('.pets').style.left = `calc(0px - ${1080 * (currentPage -1)}px)`;
 });
 
-firstPageBtn.addEventListener('click', (e) => {
-    checkItemsPerPage();
-
-    if (currentPage > 1) currentPage = 1;
-    numberBtn.textContent = currentPage;
-
-    slider.style.top = `calc(0px)`;
-
-    checkBtnsDisabled();
-});
-
-lastPageBtn.addEventListener('click', (e) => {
-    checkItemsPerPage(); 
-
-    if (currentPage < fullPetsList.length / itemsPerPage) {
-        currentPage = fullPetsList.length / itemsPerPage;
-        numberBtn.textContent = currentPage;
-    }
-    slider.style.top = `calc(0px - ${930 * (currentPage -1)}px)`;
-    checkBtnsDisabled();
-});
