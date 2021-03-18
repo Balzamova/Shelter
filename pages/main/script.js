@@ -5,9 +5,9 @@ const popupClosedBtn = document.querySelector('.popup__close');
 
 const slider = document.querySelector('.pets');
 let pets = []; 
-let fullPetsList = []; //48 карточек = 8 шт*6 стр
+let fullPetsList = []; 
 let currentPage = 1;
-let itemsPerPage = 8; //по умолчанию большой экран с 8 питомцами
+let itemsPerPage = 3; 
 
 const request = new XMLHttpRequest(); 
 request.open('GET', './pets.json');  
@@ -141,19 +141,22 @@ const checkItemsPerPage = () => {     //проверка количества с
 
 prevPageBtn.addEventListener('click', (e) => {
     checkItemsPerPage(); 
-
+    
+    if (currentPage === 1) currentPage = (fullPetsList.length / itemsPerPage + 1); 
     if (currentPage > 1) currentPage--;
 
-    document.querySelector('.pets').style.left = `calc(0px - ${1080 * (currentPage - 1)}px)`;
+    slider.style.left = `calc(0px - ${1080 * (currentPage - 1)}px)`;
     
 });
 
 nextPageBtn.addEventListener('click', (e) => {
     checkItemsPerPage(); 
 
-    if (currentPage < fullPetsList.length / itemsPerPage) {
+    if (currentPage < fullPetsList.length / itemsPerPage) { 
         currentPage++;
     }
-    document.querySelector('.pets').style.left = `calc(0px - ${1080 * (currentPage -1)}px)`;
+    if (currentPage === fullPetsList.length / itemsPerPage) currentPage = 1;    
+
+    slider.style.left = `calc(0px - ${1080 * (currentPage -1)}px)`;
 });
 
