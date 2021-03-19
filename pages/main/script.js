@@ -138,6 +138,12 @@ const checkItemsPerPage = () => {     //проверка количества с
     } else itemsPerPage = 3;
 }
 
+function removingClassesInMenu() {
+    document.querySelector('.header__burger').classList.remove('active');
+    document.querySelector('.header__nav').classList.remove('active');
+    document.querySelector('body').classList.remove('lock');
+}
+
 prevPageBtn.addEventListener('click', (e) => {
     checkItemsPerPage(); 
     
@@ -165,8 +171,7 @@ document.querySelector('.header__burger').addEventListener('click', () => {
     document.querySelector('body').classList.toggle('lock');
 });
 
-document.querySelector('.header__item:nth-child(4n)').addEventListener('click', () => {
-       document.querySelector('.header__burger').classList.remove('active');
-    document.querySelector('.header__nav').classList.remove('active');
-    document.querySelector('body').classList.remove('lock');
-});
+document.querySelector('.header__item:nth-child(1)').addEventListener('click', removingClassesInMenu);
+document.querySelector('.header__item:nth-child(2)').addEventListener('click', removingClassesInMenu);
+document.querySelector('.header__item:nth-child(3)').addEventListener('click', removingClassesInMenu);
+document.querySelector('.header__item:nth-child(4)').addEventListener('click', removingClassesInMenu);
