@@ -443,11 +443,12 @@ body.lock {
     .pets__slider-block {
         margin: 0 0 150px;
         width: 580px;
-        height: 1370px;
+        height: 1365px;
     }
     .pets {
         width: 580px;
-        height: 1370px;
+        height: 1365px;
+        row-gap: 30px;
     }
     .pagination-block {
         top: 1400px;
@@ -593,11 +594,12 @@ body.lock {
     .pets__slider-block {
         margin: 0 0 150px;
         width: 270px;
-        height: 1370px;
+        height: 1365px;
     }
     .pets {
-        height: 1370px;
+        height: 1365px;
         width: 270px;
+        row-gap: 30px;
     }
     .pagination-block {
         top: 1400px;
@@ -776,11 +778,12 @@ body.lock {
     .pets__slider-block {
         margin: 0 0 150px;
         width: 270px;
-        height: 1370px;
+        height: 1365px;
     }
     .pets {
-        height: 1370px;
+        height: 1365px;
         width: 270px;
+        row-gap: 30px;
     }
     .pagination-block {
         top: 1400px;
