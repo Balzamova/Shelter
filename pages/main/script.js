@@ -1,13 +1,11 @@
 const prevPageBtn = document.querySelector('.prevPage');
 const nextPageBtn = document.querySelector('.nextPage');
-
 const popupClosedBtn = document.querySelector('.popup__close');
-
 const slider = document.querySelector('.pets');
 let pets = []; 
-let fullPetsList = []; //48 карточек = 8 шт*6 стр
+let fullPetsList = []; 
 let currentPage = 1;
-let itemsPerPage = 8; //по умолчанию большой экран с 8 питомцами
+let itemsPerPage = 3; 
 
 const request = new XMLHttpRequest(); 
 request.open('GET', './pets.json');  
@@ -131,29 +129,44 @@ function closePopBlock(i) {
     document.querySelector("body").classList.toggle('lock');
 }
 
+
 const checkItemsPerPage = () => {     //проверка количества страниц для загрузки в зависимости от размера экрана
-    if (document.querySelector('body').offsetWidth > 768 && document.querySelector('body').offsetWidth < 1280) {
+    if (document.querySelector('body').offsetWidth > 767 && document.querySelector('body').offsetWidth < 1280) {
         itemsPerPage = 2;
-    } else if (document.querySelector('body').offsetWidth <= 768) {
+    } else if (document.querySelector('body').offsetWidth <= 767) {
         itemsPerPage = 1;
     } else itemsPerPage = 3;
 }
 
 prevPageBtn.addEventListener('click', (e) => {
     checkItemsPerPage(); 
-
+    
+    if (currentPage === 1) currentPage = (fullPetsList.length / itemsPerPage + 1); 
     if (currentPage > 1) currentPage--;
 
-    document.querySelector('.pets').style.left = `calc(0px - ${1080 * (currentPage - 1)}px)`;
+    slider.style.left = `calc(0px - ${320 * itemsPerPage * (currentPage - 1)}px)`;
     
 });
 
 nextPageBtn.addEventListener('click', (e) => {
-    checkItemsPerPage(); 
+   checkItemsPerPage(); 
 
-    if (currentPage < fullPetsList.length / itemsPerPage) {
+    if (currentPage < fullPetsList.length / itemsPerPage) { 
         currentPage++;
     }
-    document.querySelector('.pets').style.left = `calc(0px - ${1080 * (currentPage -1)}px)`;
+    if (currentPage === fullPetsList.length / itemsPerPage) currentPage = 1;    
+
+    slider.style.left = `calc(0px - ${320 * itemsPerPage * (currentPage -1)}px)`;
 });
 
+document.querySelector('.header__burger').addEventListener('click', () => {
+    document.querySelector('.header__burger').classList.toggle('active');
+    document.querySelector('.header__nav').classList.toggle('active');
+    document.querySelector('body').classList.toggle('lock');
+});
+
+document.querySelector('.header__item:nth-child(4n)').addEventListener('click', () => {
+       document.querySelector('.header__burger').classList.remove('active');
+    document.querySelector('.header__nav').classList.remove('active');
+    document.querySelector('body').classList.remove('lock');
+});

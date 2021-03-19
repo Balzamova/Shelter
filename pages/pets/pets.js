@@ -133,9 +133,9 @@ function closePopBlock(i) {
 }
 
 const checkItemsPerPage = () => {     //проверка количества страниц для загрузки в зависимости от размера экрана
-    if (document.querySelector('body').offsetWidth > 768 && document.querySelector('body').offsetWidth < 1280) {
+    if (document.querySelector('body').offsetWidth > 767 && document.querySelector('body').offsetWidth < 1280) {
         itemsPerPage = 6;
-    } else if (document.querySelector('body').offsetWidth <= 768) {
+    } else if (document.querySelector('body').offsetWidth <= 767) {
         itemsPerPage = 3;
     } else itemsPerPage = 8;
 }
@@ -205,4 +205,16 @@ lastPageBtn.addEventListener('click', (e) => {
     }
     slider.style.top = `calc(0px - ${930 * (currentPage -1)}px)`;
     checkBtnsDisabled();
+});
+
+document.querySelector('.header__burger').addEventListener('click', () => {
+    document.querySelector('.header__burger').classList.toggle('active');
+    document.querySelector('.header__nav').classList.toggle('active');
+    document.querySelector('body').classList.toggle('lock');
+});
+
+document.querySelector('.header__item:nth-child(4n)').addEventListener('click', () => {
+       document.querySelector('.header__burger').classList.remove('active');
+    document.querySelector('.header__nav').classList.remove('active');
+    document.querySelector('body').classList.remove('lock');
 });
