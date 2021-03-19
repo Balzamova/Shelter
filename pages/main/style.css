@@ -638,7 +638,7 @@ background: #FDDCC4;
     }
 }
 
-@media (min-width: 320px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 767px) {
     body.lock {
         overflow: hidden;
     }
@@ -774,18 +774,22 @@ background: #FDDCC4;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin: 30px auto 45px;
+        margin: 30px 0 45px;
     }
     .footer__contacts-block, 
     .footer__address-block {
         margin: 0;
-        max-width: 330px;        
+        max-width: 280px;        
+    }
+    .footer__title {
+        font-size: 25px;
     }
     .footer__list {
-        text-align: center;
+        align-items: center;
     }
     .footer__item:nth-child(2) {
         margin: 0 0 40px 0;
+        width: 278px;
     }
     .footer__item {
         display: flex;

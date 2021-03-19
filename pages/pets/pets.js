@@ -133,9 +133,9 @@ function closePopBlock(i) {
 }
 
 const checkItemsPerPage = () => {     //проверка количества страниц для загрузки в зависимости от размера экрана
-    if (document.querySelector('body').offsetWidth > 768 && document.querySelector('body').offsetWidth < 1280) {
+    if (document.querySelector('body').offsetWidth > 767 && document.querySelector('body').offsetWidth < 1280) {
         itemsPerPage = 6;
-    } else if (document.querySelector('body').offsetWidth <= 768) {
+    } else if (document.querySelector('body').offsetWidth <= 767) {
         itemsPerPage = 3;
     } else itemsPerPage = 8;
 }
