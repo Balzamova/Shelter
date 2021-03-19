@@ -130,9 +130,9 @@ function closePopBlock(i) {
 }
 
 const checkItemsPerPage = () => {     //проверка количества страниц для загрузки в зависимости от размера экрана
-    if (document.querySelector('body').offsetWidth > 768 && document.querySelector('body').offsetWidth < 1280) {
+    if (document.querySelector('body').offsetWidth > 767 && document.querySelector('body').offsetWidth < 1280) {
         itemsPerPage = 2;
-    } else if (document.querySelector('body').offsetWidth <= 768) {
+    } else if (document.querySelector('body').offsetWidth <= 767) {
         itemsPerPage = 1;
     } else itemsPerPage = 3;
 }
@@ -143,7 +143,7 @@ prevPageBtn.addEventListener('click', (e) => {
     if (currentPage === 1) currentPage = (fullPetsList.length / itemsPerPage + 1); 
     if (currentPage > 1) currentPage--;
 
-    slider.style.left = `calc(0px - ${1080 * (currentPage - 1)}px)`;
+    slider.style.left = `calc(0px - ${960 * (currentPage - 1)}px)`;
     
 });
 
@@ -155,7 +155,7 @@ nextPageBtn.addEventListener('click', (e) => {
     }
     if (currentPage === fullPetsList.length / itemsPerPage) currentPage = 1;    
 
-    slider.style.left = `calc(0px - ${1080 * (currentPage -1)}px)`;
+    slider.style.left = `calc(0px - ${960 * (currentPage -1)}px)`;
 });
 
 document.querySelector('.header__burger').addEventListener('click', () => {
