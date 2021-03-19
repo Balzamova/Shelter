@@ -209,7 +209,6 @@ body.lock {
 .pets__content {
     justify-content: space-between;
     padding: 80px 40px 120px;
-
 }
 .pets__title {
     max-width: 400px;;
@@ -233,7 +232,6 @@ body.lock {
     width: 910px;
     position: relative;
 }
-
 .card {
     width: 270px;
     height: 435px;
@@ -637,10 +635,11 @@ background: #FDDCC4;
         margin: 0 10px 0;
     }
     .pets__slider {
-        width: 580px;
+        width: 590px;
     }
     .pets {
-        width: 580px;
+        width: 590px;
+        column-gap: 50px;
     }
     .btn__arrow {
         margin: 10px;
@@ -858,7 +857,8 @@ background: #FDDCC4;
         margin: 0 10px;
     }  
     .pets {
-        width: 270px;       
+        width: 270px;  
+        column-gap: 50px;     
     }
     .pets__getbtn {
         margin-top: 40px;
@@ -1128,7 +1128,8 @@ background: #FDDCC4;
         margin: 0 10px;
     }  
     .pets {
-        width: 300px;       
+        width: 270px;    
+        column-gap: 50px;   
     }
     .pets__getbtn {
         margin-top: 40px;
