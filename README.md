@@ -10,13 +10,13 @@
 *   *animation for links and buttons*
 3. **JS**
 *   *1st page:* 
-    - creating DOM elements
-    - random adding elements (pets): 3-2-1 el/page
-    - slider block
+    - creating DOM elements by JS
+    - random adding elements (pets cards): 3-2-1 el/page
+    - carousel block
     - burger menu
 *   *2nd page:*
-    - creating DOM elements
-    - random adding elements (pets): 8-6-3 el/page
+    - creating DOM elements by JS
+    - random adding elements (pets cards): 8-6-3 el/page
     - pagination block
     - burger menu
 
