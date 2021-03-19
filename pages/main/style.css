@@ -851,14 +851,14 @@ background: #FDDCC4;
     .pets__slider-block {
         position: relative;
         height: 435px;
-        width: 300px;
+        width: 290px;
         margin-top: 40px;
     }
     .pets__slider {        
         margin: 0 10px;
     }  
     .pets {
-        width: 300px;       
+        width: 270px;       
     }
     .pets__getbtn {
         margin-top: 40px;
