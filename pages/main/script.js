@@ -129,6 +129,7 @@ function closePopBlock(i) {
     document.querySelector("body").classList.toggle('lock');
 }
 
+
 const checkItemsPerPage = () => {     //проверка количества страниц для загрузки в зависимости от размера экрана
     if (document.querySelector('body').offsetWidth > 767 && document.querySelector('body').offsetWidth < 1280) {
         itemsPerPage = 2;
@@ -143,19 +144,19 @@ prevPageBtn.addEventListener('click', (e) => {
     if (currentPage === 1) currentPage = (fullPetsList.length / itemsPerPage + 1); 
     if (currentPage > 1) currentPage--;
 
-    slider.style.left = `calc(0px - ${960 * (currentPage - 1)}px)`;
+    slider.style.left = `calc(0px - ${320 * itemsPerPage * (currentPage - 1)}px)`;
     
 });
 
 nextPageBtn.addEventListener('click', (e) => {
-    checkItemsPerPage(); 
+   checkItemsPerPage(); 
 
     if (currentPage < fullPetsList.length / itemsPerPage) { 
         currentPage++;
     }
     if (currentPage === fullPetsList.length / itemsPerPage) currentPage = 1;    
 
-    slider.style.left = `calc(0px - ${960 * (currentPage -1)}px)`;
+    slider.style.left = `calc(0px - ${320 * itemsPerPage * (currentPage -1)}px)`;
 });
 
 document.querySelector('.header__burger').addEventListener('click', () => {

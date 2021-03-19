@@ -582,10 +582,6 @@ background: #FDDCC4;
 }
 
 @media (min-width: 768px) and (max-width: 1280px) {
-    .container {
-        max-width: 1200px;
-        min-width: 768px;
-    }
     .logo {
         margin: 30px 50px 30px 30px;
     }
@@ -640,8 +636,14 @@ background: #FDDCC4;
         overflow: hidden;
         margin: 0 10px 0;
     }
+    .pets__slider {
+        width: 580px;
+    }
     .pets {
         width: 580px;
+    }
+    .btn__arrow {
+        margin: 10px;
     }
     .pets__popup {
         width: 630px;
@@ -675,9 +677,7 @@ background: #FDDCC4;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    }
-    .footer__info {
-        margin: 30px auto 65px;
+        margin: 0;
     }
     .footer__contacts-block, 
     .footer__address-block {
@@ -839,6 +839,10 @@ background: #FDDCC4;
         order: 1;
         margin: 0;
         max-width: 300px;
+    }
+    .about__title {
+        max-width: 280px;
+        margin: 0;
     }
     .pets__content {
         align-items: center;

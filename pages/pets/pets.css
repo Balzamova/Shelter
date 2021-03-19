@@ -602,7 +602,10 @@ body.lock {
     .pagination-block {
         top: 1400px;
     }
-    .firstPage, .prevPage, .nextPage, .lastPage {
+    .firstPage, 
+    .prevPage, 
+    .nextPage, 
+    .lastPage {
         margin: 0 5px;
     }    
     .pets__popup {
@@ -782,7 +785,10 @@ body.lock {
     .pagination-block {
         top: 1400px;
     }
-    .firstPage, .prevPage, .nextPage, .lastPage {
+    .firstPage, 
+    .prevPage, 
+    .nextPage, 
+    .lastPage {
         margin: 0 5px;
     }    
     .pets__popup {
