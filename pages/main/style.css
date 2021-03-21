@@ -723,9 +723,11 @@ background: #FDDCC4;
         z-index: 50;
         margin-right: 50px;
         order: 2;
+        transform: rotate(0deg);
+        transition: transform 1s ease-in-out ; 
     }
     .header__burger:hover {
-        cursor: pointer;
+        cursor: pointer;       
     }
     .header__burger:before,
     .header__burger:after {
@@ -751,26 +753,9 @@ background: #FDDCC4;
         top: 9px;
         transition: all 0.5s ease-in-out;
     }
-    .header__burger.active:before {
+    .header__burger.active {
         transform: rotate(90deg);
-        left: 30px;
-        top: 0;
-        transition: all 0.5s ease-in-out ;        
-        background:  #F1CDB3;
-    }
-    .header__burger.active:after {
-        transform: rotate(90deg);
-        left: 0;
-        top: 0;
-        transition: all 0.5s ease-in-out;       
-        background:  #F1CDB3;
-    }
-    .header__burger.active span {
-        transform: rotate(90deg);
-        left: 15px;
-        top: 0;
-        background:  #F1CDB3;
-        transition: all 0.5s ease-in-out;
+        transition: transform 1s ease-in-out ;        
     }
     .header__nav {
         justify-content: center;
@@ -927,7 +912,7 @@ background: #FDDCC4;
     }
 
     .donation__cardblock {
-        width: 281px;
+        width: 300px;
         height: 43px;
         font-size: 15px;
     }
@@ -998,9 +983,11 @@ background: #FDDCC4;
         z-index: 50;
         margin-right: 50px;
         order: 2;
+        transform: rotate(0deg);
+        transition: transform 1s ease-in-out ; 
     }
     .header__burger:hover {
-        cursor: pointer;
+        cursor: pointer;       
     }
     .header__burger:before,
     .header__burger:after {
@@ -1026,26 +1013,9 @@ background: #FDDCC4;
         top: 9px;
         transition: all 0.5s ease-in-out;
     }
-    .header__burger.active:before {
+    .header__burger.active {
         transform: rotate(90deg);
-        left: 30px;
-        top: 0;
-        transition: all 0.5s ease-in-out ;        
-        background:  #F1CDB3;
-    }
-    .header__burger.active:after {
-        transform: rotate(90deg);
-        left: 0;
-        top: 0;
-        transition: all 0.5s ease-in-out;       
-        background:  #F1CDB3;
-    }
-    .header__burger.active span {
-        transform: rotate(90deg);
-        left: 15px;
-        top: 0;
-        background:  #F1CDB3;
-        transition: all 0.5s ease-in-out;
+        transition: transform 1s ease-in-out ;        
     }
     .header__nav {
         justify-content: center;
