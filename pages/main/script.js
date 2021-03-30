@@ -39,17 +39,17 @@ const sort863 = (list) => {
 }
 
 const sort6recursively = (list) => {
-    const length = list.length; //48 шт = все элементы
+    const length = list.length; 
 
     for (let i = 0; i < (length / 6); i++) {
-        const stepList = list.slice(i * 6, (i * 6) + 6); //берем шаги по 6 шт
+        const stepList = list.slice(i * 6, (i * 6) + 6);
 
-        for (let j = 0; j < 6; j++) { //ищу первый дублируемый элемент (по имени)
+        for (let j = 0; j < 6; j++) { 
             const duplicatedItem = stepList.find((item, ind) => {
                 return item.name === stepList[j].name && (ind !== j);
             });
 
-            if (duplicatedItem !== undefined) { //определяю в какой 8-ке находится первый дублируемый и ставлю его на первое место в 8-ке
+            if (duplicatedItem !== undefined) {
                 const ind = (i * 6) + j;
                 const which8OfList = Math.trunc(ind / 8);
                 const slider = list.splice(ind, 1)[0];
@@ -71,66 +71,65 @@ const createPets = (pets) => {
     }     
 }
 
-const createElements = (pet, i) => {  
+const createElements = (pet) => {  
     return `
     <div class="card">
         <img class="card__img" id="pet-photo" src="${pet.img}" alt="pet-photo">
         <p class="card__title" id="pet-name"> ${pet.name} </p>
-        <button class="card__button" onclick="openPopBlock(${i})"> Learn More </button>
+        <button class="card__button" onclick="createPopCard('${pet.name}')"> Learn More </button>
     </div> 
-
-    <div class="popup__wrapper innactive">
-        <div class="pets__popup innactive" id="pets__popup${[i]}">
-            <button class="popup__close" onclick="closePopBlock(${i})"> x </button>
-            <div class="popup__block">
-                <img class="popup__img" src="${pet.img}" alt="${pet.name}">
-                <div class="popup__info">
-                    <div class="popup__title" id="pet-name">${pet.name}</div>
-                    <div class="popup__subtitle">${pet.type} - ${pet.breed}</div>
-                    <div class="pet-description">${pet.description}</div>
-                    <ul class="popup__list">
-                        <li class="popup__item">
-                            <span> Age: </span><span class="pet__age">${pet.age}</span>
-                        </li>
-                        <li class="popup__item">
-                            <span>Inoculations: </span><span class="pet__inoculations">${pet.inoculations}</span>
-                        </li>
-                        <li class="popup__item">
-                            <span>Diseases: </span><span class="pet__diseases">${pet.diseases}</span>
-                        </li>
-                        <li class="popup__item">
-                            <span> Parasites: </span><span class="pet__parasites">${pet.parasites}</span>
-                        </li>
-                    </ul>
-                </div>                 
-            </div>
-        </div>
-    </div>   
     `;
 }
 
-function openPopBlock(i) { 
-    let activePet = document.querySelectorAll(`.pets__popup`)[i];
-    let activeWrapper = document.querySelectorAll(".popup__wrapper")[i];
+const createPopCard = (pet) => {	
+	const modal = document.createElement('div');
+	modal.classList.add('popup__wrapper');
+	document.querySelector("body").classList.add('lock');
 
-    activePet.classList.remove('innactive');
-    activeWrapper.classList.remove('innactive');
-    
-    document.querySelector("body").classList.toggle('lock');
+	for (let i = 0; i < pets.length; i++) { 
+		if (pets[i].name === pet) {
+			modal.insertAdjacentHTML('afterbegin', `
+				<div class="pets__popup" id="pets__popup">
+					<button class="popup__close" onclick="closePopBlock()"> x </button>
+					<div class="popup__block">
+							<img class="popup__img" src="${pets[i].img}" alt="${pets[i].name}">
+							<div class="popup__info">
+									<div class="popup__title">${pets[i].name}</div>
+									<div class="popup__subtitle">${pets[i].type} - ${pets[i].breed}</div>
+									<div class="pet-description">${pets[i].description}</div>
+									<ul class="popup__list">
+											<li class="popup__item">
+													<span> Age: </span><span class="pet__age">${pets[i].age}</span>
+											</li>
+											<li class="popup__item">
+													<span>Inoculations: </span><span class="pet__inoculations">${pets[i].inoculations}</span>
+											</li>
+											<li class="popup__item">
+													<span>Diseases: </span><span class="pet__diseases">${pets[i].diseases}</span>
+											</li>
+											<li class="popup__item">
+													<span> Parasites: </span><span class="pet__parasites">${pets[i].parasites}</span>
+											</li>
+									</ul>
+							</div>
+					</div>
+				</div>
+			`);
+
+			document.body.appendChild(modal);
+			return modal;
+		}
+	}
 }
 
-function closePopBlock(i) {     
-    let activePet = document.querySelectorAll(`.pets__popup`)[i];
-    let activeWrapper = document.querySelectorAll(".popup__wrapper")[i];
+const closePopBlock = () => {
+	document.querySelector("body").classList.remove('lock');
 
-    activePet.classList.add('innactive');
-    activeWrapper.classList.add('innactive');
-
-    document.querySelector("body").classList.toggle('lock');
+	const modal = document.querySelector('.popup__wrapper');
+	modal.parentNode.removeChild(modal);
 }
 
-
-const checkItemsPerPage = () => {     //проверка количества страниц для загрузки в зависимости от размера экрана
+const checkItemsPerPage = () => {
     if (document.querySelector('body').offsetWidth > 767 && document.querySelector('body').offsetWidth < 1280) {
         itemsPerPage = 2;
     } else if (document.querySelector('body').offsetWidth <= 767) {
