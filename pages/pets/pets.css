@@ -143,7 +143,7 @@ body.lock {
     display: flex;
     flex-flow: wrap;
     top: 0px;
-    width: 1200px;
+    width: 1240px;
     height: 910px;
     position: relative;    
 }
@@ -446,7 +446,7 @@ body.lock {
         height: 1365px;
     }
     .pets {
-        width: 580px;
+        width: 620px;
         height: 1365px;
     }
     .pagination-block {
