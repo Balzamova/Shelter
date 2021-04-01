@@ -227,12 +227,12 @@ body.lock {
 }
 .pets {
     display: flex;   
-    column-gap: 50px;
     top: 0px;
     width: 910px;
     position: relative;
 }
 .card {
+		margin-right: 50px;
     width: 270px;
     height: 435px;
     background: #FAFAFA;
@@ -639,7 +639,6 @@ background: #FDDCC4;
     }
     .pets {
         width: 590px;
-        column-gap: 50px;
     }
     .btn__arrow {
         margin: 10px;
@@ -842,8 +841,7 @@ background: #FDDCC4;
         margin: 0 10px;
     }  
     .pets {
-        width: 270px;  
-        column-gap: 50px;     
+        width: 270px;       
     }
     .pets__getbtn {
         margin-top: 40px;
@@ -1099,7 +1097,6 @@ background: #FDDCC4;
     }  
     .pets {
         width: 270px;    
-        column-gap: 50px;   
     }
     .pets__getbtn {
         margin-top: 40px;

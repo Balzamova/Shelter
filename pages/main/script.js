@@ -2,6 +2,7 @@ const prevPageBtn = document.querySelector('.prevPage');
 const nextPageBtn = document.querySelector('.nextPage');
 const popupClosedBtn = document.querySelector('.popup__close');
 const slider = document.querySelector('.pets');
+const sliderShift = 320;
 let pets = []; 
 let fullPetsList = []; 
 let currentPage = 1;
@@ -149,7 +150,7 @@ prevPageBtn.addEventListener('click', (e) => {
     if (currentPage === 1) currentPage = (fullPetsList.length / itemsPerPage + 1); 
     if (currentPage > 1) currentPage--;
 
-    slider.style.left = `calc(0px - ${320 * itemsPerPage * (currentPage - 1)}px)`;
+    slider.style.left = `calc(0px - ${sliderShift * itemsPerPage * (currentPage - 1)}px)`;
     
 });
 
@@ -161,7 +162,7 @@ nextPageBtn.addEventListener('click', (e) => {
     }
     if (currentPage === fullPetsList.length / itemsPerPage) currentPage = 1;    
 
-    slider.style.left = `calc(0px - ${320 * itemsPerPage * (currentPage -1)}px)`;
+    slider.style.left = `calc(0px - ${sliderShift * itemsPerPage * (currentPage -1)}px)`;
 });
 
 document.querySelector('.header__burger').addEventListener('click', () => {
