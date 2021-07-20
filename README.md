@@ -1,6 +1,6 @@
-# Development with JS code script </br>
+# Shelter
 
-## My ready page-proof: [link](https://balzamova.github.io/shelter/pages/main/)
+## Project: [link](https://balzamova.github.io/shelter/pages/main/)
 
 ### Used frameworks: </br>
 1. **HTML**
